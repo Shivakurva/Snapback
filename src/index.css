@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f5f2eb;
+  --color-ink: #1c2024;
+  --color-accent: #d9482b;
+  --font-serif: Georgia, "Times New Roman", serif;
+  --font-mono: ui-monospace, "Cascadia Code", Consolas, Menlo, monospace;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: default;
+}
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+textarea:focus-visible {
+  outline: none;
+}
+
+/* Restored line: a short highlight that fades out. */
+@keyframes flash {
+  0%,
+  35% {
+    background: rgb(217 72 43 / 0.4);
+  }
+  100% {
+    background: transparent;
+  }
+}
+.flash {
+  animation: flash 2.4s ease-out forwards;
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+.card-in {
+  animation: card-in 0.25s ease-out;
+}
+
+@keyframes ringing {
+  50% {
+    box-shadow: 0 0 0 14px rgb(217 72 43 / 0.35);
+  }
+}
+.ringing {
+  animation: ringing 1.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ringing,
+  .card-in {
+    animation: none;
+  }
+}
